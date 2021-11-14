@@ -1,10 +1,8 @@
+from store.models import Product
 from django.contrib import admin
 from django.contrib.contenttypes.admin import GenericTabularInline
 from store.admin import ProductAdmin
-from store.models import Product
 from tags.models import TaggedItem
-
-# Register your models here.
 
 
 class TagInline(GenericTabularInline):
@@ -12,9 +10,9 @@ class TagInline(GenericTabularInline):
     model = TaggedItem
 
 
-class CustomeProductAdmin(ProductAdmin):
+class CustomProductAdmin(ProductAdmin):
     inlines = [TagInline]
 
 
 admin.site.unregister(Product)
-admin.site.register(Product, CustomeProductAdmin)
+admin.site.register(Product, CustomProductAdmin)
